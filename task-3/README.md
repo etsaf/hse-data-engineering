@@ -1,3 +1,3 @@
-# Задание 3. Map-reduce
+# Задание 3. MapReduce
 
 ...
