@@ -63,6 +63,11 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 hdfs dfs -put ./price_paid_records.csv /mydata
 ```
 
+При желании проверяем наличие файла
+```bash
+hdfs dfs -ls -R /mydata
+```
+
 Запускаем Hadoop Cluster
 ```bash
 cd hadoop-3.2.3/sbin
