@@ -48,7 +48,7 @@ print(max_price)
 
 ## Hadoop
 
-Добавляем `map.py` и `reduce.py`
+Подключившись к виртуальной машине, добавляем `map.py` и `reduce.py`
 
 ```bash
 nano map.py
