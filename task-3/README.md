@@ -2,7 +2,7 @@
 
 ## Датасет
 
-Найден (https://www.kaggle.com/datasets/hm-land-registry/uk-housing-prices-paid/)[датасет] более 1 ГБ с данными по недвижимости в Великобритании на Каггле
+Найден [https://www.kaggle.com/datasets/hm-land-registry/uk-housing-prices-paid/](датасет) более 1 ГБ с данными по недвижимости в Великобритании на Каггле
 
 | Transaction unique identifier          | Price | Date of Transfer | Property Type | Old/New | Duration | Town/City  | District           | County             | PPDCategory Type |
 |----------------------------------------|-------|------------------|---------------|---------|----------|------------|--------------------|--------------------|------------------|
