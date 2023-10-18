@@ -15,7 +15,6 @@
 
 Написаны простые map и reduce для поиска максимальной стоимости недвижимости
 
-
 ```python
 #!/usr/bin/env python
 """map.py"""
@@ -46,6 +45,21 @@ print(max_price)
 
 ## Hadoop
 
+Добавляем `map.py` и `reduce.py`
+
+```bash
+nano map.py
+nano reduce.py
+```
+
+Загружаем с гугл-диска `price_paid_records.csv`
+
+```bash
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=FILEID" -O FILENAME && rm -rf /tmp/cookies.txt
+
+hdfs dfs -put /price_paid_records.csv /mydata
+```
+
 Запускаем Hadoop Cluster
 ```bash
 cd hadoop-3.2.3/sbin
@@ -53,6 +67,7 @@ cd hadoop-3.2.3/sbin
 cd ../..
 ```
 
+Запускаем MapReduce на Hadoop Cluster
 ```bash
 $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -file ./map.py -mapper map.py \
 -file ./reduce.py -reducer reduce.py \
