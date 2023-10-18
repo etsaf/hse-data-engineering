@@ -46,6 +46,13 @@ print(max_price)
 
 ## Hadoop
 
+Запускаем Hadoop Cluster
+```bash
+cd hadoop-3.2.3/sbin
+./start-all.sh
+cd ../..
+```
+
 ```bash
 $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -file ./map.py -mapper map.py \
 -file ./reduce.py -reducer reduce.py \
