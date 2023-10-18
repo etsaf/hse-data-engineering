@@ -152,6 +152,11 @@ $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -fil
 2023-10-18 11:29:17,940 INFO streaming.StreamJob: Output directory: /mydata/output
 ```
 
+Для удаления папки output c файловой системы Hadoop используем
+```bash
+hdfs dfs -rm -r /mydata/output
+```
+
 ## Результаты
 
 |               | Без Hadoop | Hadoop Standalone | Hadoop Cluster |
