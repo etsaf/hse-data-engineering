@@ -129,6 +129,11 @@ $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -fil
 2023-10-18 11:29:17,940 INFO streaming.StreamJob: Output directory: /mydata/output
 ```
 
+## Результаты
 
+|               | Без Hadoop | Hadoop Standalone | Hadoop Cluster |
+|---------------|------------|-------------------|----------------|
+| Время, ms     |            |                   |                |
+| Память, bytes |            |                   |                |
 
 
