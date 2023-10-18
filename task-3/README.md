@@ -79,7 +79,7 @@ cd ../..
 ```bash
 $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -file ./map.py -mapper map.py \
 -file ./reduce.py -reducer reduce.py \
--input /mydata/uk_property.csv -output /mydata/output
+-input /mydata/price_paid_records.csv -output /mydata/output
 
 2023-10-18 11:29:00,616 INFO mapreduce.Job: Running job: job_1697628422270_0001
 2023-10-18 11:29:06,729 INFO mapreduce.Job: Job job_1697628422270_0001 running in uber mode : false
