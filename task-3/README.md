@@ -68,6 +68,8 @@ hdfs dfs -put ./price_paid_records.csv /mydata
 hdfs dfs -ls -R /mydata
 ```
 
+### Hadoop Cluster
+
 Запускаем Hadoop Cluster
 ```bash
 cd hadoop-3.2.3/sbin
@@ -151,6 +153,15 @@ $ hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -fil
 		Bytes Written=7
 2023-10-18 11:29:17,940 INFO streaming.StreamJob: Output directory: /mydata/output
 ```
+
+Переносим результат MapReduce на локальную машину
+```
+hdfs dfs -get /mydata/output ./output
+cd output/
+nano part-00000
+```
+
+Получаем результат
 
 Для удаления папки output c файловой системы Hadoop используем
 ```bash
