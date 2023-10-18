@@ -4,7 +4,7 @@
 
 Найден [датасет](https://www.kaggle.com/datasets/hm-land-registry/uk-housing-prices-paid/) более 1 ГБ с данными по недвижимости в Великобритании на Каггле
 
-Пример данных
+**Пример данных**
 | Transaction unique identifier          | Price | Date of Transfer | Property Type | Old/New | Duration | Town/City  | District           | County             | PPDCategory Type |
 |----------------------------------------|-------|------------------|---------------|---------|----------|------------|--------------------|--------------------|------------------|
 | {81B82214-7FBC-4129-9F6B-4956B4A663AD} | 25000 | 18/08/1995 00:00 | T             | N       | F        | OLDHAM     | OLDHAM             | GREATER MANCHESTER | A                |
@@ -16,6 +16,7 @@
 
 Написаны простые map и reduce для поиска максимальной стоимости недвижимости
 
+**Map**
 ```python
 #!/usr/bin/env python
 """map.py"""
@@ -28,6 +29,7 @@ for line in sys.stdin:
     print(price)
 ```
 
+**Reduce**
 ```python
 #!/usr/bin/env python
 """reduce.py"""
