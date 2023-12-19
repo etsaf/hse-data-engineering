@@ -22,3 +22,5 @@
 Задание 3. [MapReduce](https://github.com/etsaf/hse-data-engineering/tree/main/task-3)
 
 Задание 4. [Airflow](https://github.com/etsaf/hse-data-engineering/tree/main/task-4)
+
+Задание 5. [Spark](https://github.com/etsaf/hse-data-engineering/tree/main/task-5)
