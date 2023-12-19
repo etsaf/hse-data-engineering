@@ -1,4 +1,4 @@
-# Задание 4. DAG
+# Задание 4. Airflow
 
 Измененный DAG, выполняющий наш MapReduce, находится в файле hse_mts_sample_ssh_DAG.py
 
