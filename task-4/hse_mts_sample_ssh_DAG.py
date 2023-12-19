@@ -9,7 +9,7 @@ default_args = {
             'email': ['airflow@example.com'],
             'email_on_failure': False,
             'email_on_retry': False,
-            'start_date': '2023-12-05',
+            'start_date': '2023-12-18',
             'retries': 1,
             'retry_delay': timedelta(minutes=6000),
             'catchup': False
@@ -20,19 +20,24 @@ dag = DAG(dag_id='testing_stuff',
           schedule_interval='50 * * * *',
           dagrun_timeout=timedelta(seconds=600))
 
+HADOOP_BIN_PREFIX = "/home/hdoop/hadoop-3.2.3/bin/"
+HADOOP_STREAMING_JAR = "hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar"
+
 t1_bash = """
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=FILEID' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=FILEID" -O FILENAME && rm -rf /tmp/cookies.txt
-""" # download file from google drive
+wget https://gist.githubusercontent.com/vlerdman/84e9a162bccb6ec4a31e2435ba480bf8/raw/fc7523f98365196e22b33c009650226612d9464a/sd.csv -O sd.csv && \
+wget https://raw.githubusercontent.com/etsaf/hse-data-engineering/main/task-3/map.py -O map.py && \
+wget https://raw.githubusercontent.com/etsaf/hse-data-engineering/main/task-3/reduce.py -O reduce.py
+""" # download file and map/reduce scripts
 
 t2_bash = ":" # do nothing, the file is already unzipped
 
-t3_bash = """export PATH="" && hdfs dfs -put ./price_paid_records.csv /mydata""" # add file to hdfs
+t3_bash = "{}hdfs dfs -put ./sd.csv /mydata".format(HADOOP_BIN_PREFIX) # add file to hdfs
 
-t4_bash = "hadoop jar hadoop-3.2.3/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar -files ./map.py,./reduce.py -mapper map.py -reducer reduce.py -input /mydata/price_paid_records.csv -output /mydata/output"
+t4_bash = "{}hadoop jar {} -files ./map.py,./reduce.py -mapper \"python3 map.py\" -reducer \"python3 reduce.py\" -input /mydata/sd.csv -output /mydata/output".format(HADOOP_BIN_PREFIX, HADOOP_STREAMING_JAR)
 
-t5_bash = "hdfs dfs -cat /mydata/output/part-00000" # print result of MapReduce
-t6_bash = "rm price_paid_records.csv" # delete csv file
-t7_bash = "hdfs dfs -rm -r /mydata/output" # delete output from hadoop
+t5_bash = "{}hdfs dfs -cat /mydata/output/part-00000".format(HADOOP_BIN_PREFIX) # print result of MapReduce
+t6_bash = "{}hdfs dfs -rm -r /mydata/sd.csv && rm sd.csv && rm map.py && rm reduce.py".format(HADOOP_BIN_PREFIX) # delete csv file
+t7_bash = "{}hdfs dfs -rm -r /mydata/output".format(HADOOP_BIN_PREFIX) # delete output from hadoop
 
 t1 = SSHOperator(ssh_conn_id='ssh_default',
                  task_id='get_dataset_from_web',
