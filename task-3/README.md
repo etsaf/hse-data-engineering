@@ -100,7 +100,7 @@ Command being timed: "cat price_paid_records.csv"
 98900000
 ```
 
-### Hadoop Cluster
+### Hadoop Standalone и Hadoop Cluster
 
 Запускаем Hadoop Cluster
 ```bash
@@ -236,7 +236,7 @@ hdfs dfs -rm -r /mydata/output
 
 |                | Без Hadoop | Hadoop Standalone | Hadoop Cluster |
 |----------------|------------|-------------------|----------------|
-| Время, seconds |   24.520   |                   |     70.196     |
-| Память, bytes  |   2020000  |                   |   465690624    |
+| Время, seconds |   24.520   |       72.322      |     70.196     |
+| Память, bytes  |   2020000  |      467300248    |   465690624    |
 
 
